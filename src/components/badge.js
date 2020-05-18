@@ -4,6 +4,7 @@ import "./styles/badge.css";
 
 class Badge extends React.Component {
     render(){
+        const {name,lastName,jobTitle,twitter} = this.props
        return(
         <div className="Badge">
             <div className="Badge__header">
@@ -11,11 +12,11 @@ class Badge extends React.Component {
             </div>
             <div className="Badge__section-name">
                 <img src="https://www.gravatar.com/avatar?d=identicon" alt="Avatar" className="Badge__avatar" />
-                <h1>Jorge <br/> Almonacid</h1>
+                <h1>{`${name}\n${lastName}`}</h1>
             </div>
             <div className="Badge__section-info">
-                <h3>Software Engineer</h3>
-                <div>@cokealmonacid</div>
+                <h3>{jobTitle}</h3>
+                <div>@{twitter}</div>
             </div>
             <div className="Badge__footer">
                 #platziconf

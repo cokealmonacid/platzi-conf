@@ -6,4 +6,4 @@ import './global.css';
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<Badge />, container);
+ReactDOM.render(<Badge name="Jorge" lastName="Almonacid" jobTitle="Software Engineer" twitter="cokealmonacid" />, container);
