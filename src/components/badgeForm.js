@@ -2,10 +2,15 @@ import React from 'react';
 
 class BadgeForm extends React.Component {
 
+    state = {}
+
     handleChange = e => {
-        console.log({
-            name:e.target.name,
-            value:e.target.value
+        // console.log({
+        //     name:e.target.name,
+        //     value:e.target.value
+        // });
+        this.setState({
+            [e.target.name]: e.target.value,
         });
     };
 
@@ -16,6 +21,7 @@ class BadgeForm extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         console.log('form was submitted');
+        console.log(this.state);
     }
 
     render() {
@@ -25,7 +31,53 @@ class BadgeForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
-                        <input onChange={this.handleChange} className="form-control" type="text" name="firstName"/>
+                        <input
+                            onChange={this.handleChange}
+                            className="form-control"
+                            type="text"
+                            name="firstName"
+                            value={this.state.firstName}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Last Name</label>
+                        <input
+                            onChange={this.handleChange}
+                            className="form-control"
+                            type="text"
+                            name="lastName"
+                            value={this.state.lastName}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input
+                            onChange={this.handleChange}
+                            className="form-control"
+                            type="email"
+                            name="email"
+                            value={this.state.email}
+                            />
+                    </div>
+                    <div className="form-group">
+                        <label>Job Title</label>
+                        <input
+                            onChange={this.handleChange}
+                            className="form-control"
+                            type="text"
+                            name="jobTitle"
+                            value={this.state.jobTitle}
+                            />
+                    </div>
+                    <div className="form-group">
+                        <label>Twitter</label>
+                        <input
+                            onChange={this.handleChange}
+                            className="form-control"
+                            type="text"
+                            name="twitter"
+                            value={this.state.twitter}
+                            />
                     </div>
                     <button className="btn btn-primary" onClick={this.handleClick}>Save</button>
                 </form>
