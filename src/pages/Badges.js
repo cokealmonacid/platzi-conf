@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './styles/Badges.css';
 import confLogo from '../images/badge-logo.svg';
 import BadgesList from '../components/badgesList';
+import PageLoading from '../components/pageLoading';
+import PageError from '../components/pageError';
 
 import api from '../api';
 
@@ -11,7 +13,7 @@ class Badges extends React.Component {
     state = {
         loading: true,
         error: null,
-        data: undefined,
+        data: [],
     }
 
     componentDidMount = () => {
@@ -21,7 +23,7 @@ class Badges extends React.Component {
     fetchData = async () => {
         this.setState({loading: true, error:null});
         try{
-            const data = await api.badges.list();
+            const data = await api.badges.list();;
             this.setState({loading: false, data});
         } catch(error) {
             this.setState({loading: false, error});
@@ -30,11 +32,11 @@ class Badges extends React.Component {
 
     render() {
         if (this.state.loading) {
-            return 'Loading...';
+            return <PageLoading />;
         }
 
         if (this.state.error) {
-            return `Error: ${this.state.error.message}`;
+            return <PageError error={this.state.error} />;
         }
         return (
             <React.Fragment>
