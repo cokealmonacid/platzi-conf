@@ -8,10 +8,9 @@ class BadgeForm extends React.Component {
     }
 
     render() {
-        const {onChange, formValue, onSubmit} = this.props
+        const {onChange, formValue, onSubmit, error} = this.props
         return (
             <div>
-                <h1>New Attendant</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
@@ -60,10 +59,14 @@ class BadgeForm extends React.Component {
                             className="form-control"
                             type="text"
                             name="twitter"
-                            value={this.state.twitter}
+                            value={formValue.twitter}
                             />
                     </div>
                     <button className="btn btn-primary" onClick={onSubmit}>Save</button>
+
+                    {error && (
+                        <p className="text-danger">{error}</p>
+                    )}
                 </form>
             </div>
         )
