@@ -3,28 +3,12 @@ import React from 'react';
 class BadgeForm extends React.Component {
     state = {}
 
-    handleChange = e => {
-        // console.log({
-        //     name:e.target.name,
-        //     value:e.target.value
-        // });
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    };
-
     handleClick = e => {
         console.log("button was clicked");
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        console.log('form was submitted');
-        console.log(this.state);
-    }
-
     render() {
-        const {onChange, formValue} = this.props
+        const {onChange, formValue, onSubmit} = this.props
         return (
             <div>
                 <h1>New Attendant</h1>
@@ -79,7 +63,7 @@ class BadgeForm extends React.Component {
                             value={this.state.twitter}
                             />
                     </div>
-                    <button className="btn btn-primary" onClick={this.handleClick}>Save</button>
+                    <button className="btn btn-primary" onClick={onSubmit}>Save</button>
                 </form>
             </div>
         )
