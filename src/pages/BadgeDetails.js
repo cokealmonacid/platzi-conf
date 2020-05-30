@@ -1,11 +1,12 @@
 import React from 'react';
 import confLogo from '../images/logo_conf.svg';
 import Badge from '../components/badge';
+import DeleteBadgeModal from '../components/DeleteBadgeModal';
 import {Link} from 'react-router-dom';
 import './styles/BadgeDetail.css';
 
 function BadgeDetails (props) {
-    const {badge} = props;
+    const {badge, modalIsOpen, onOpenModal} = props;
     return(
         <div>
         <div className="BadgeDetails__hero">
@@ -31,7 +32,8 @@ function BadgeDetails (props) {
                         <div><Link className="btn btn-primary mb-4" to={`/badges/${badge.id}/edit`}>Edit</Link></div>
                     </div>
                     <div>
-                        <button className="btn btn-danger">Delete</button>
+                        <button onClick={onOpenModal} className="btn btn-danger">Delete</button>
+                        <DeleteBadgeModal isOpen={modalIsOpen} onClose={props.onCloseModal} onDeleteBadge={props.onDeleteBadge}>Lorem Ipsum</DeleteBadgeModal>
                     </div>
                 </div>
             </div>
